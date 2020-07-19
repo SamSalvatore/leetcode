@@ -8,6 +8,8 @@
 /**
  * @author fucf
  * <p>
+ * LC81
+ * <p>
  * 假设按照升序排序的数组在预先未知的某个点上进行了旋转。
  * <p>
  * ( 例如，数组 [0,0,1,2,2,5,6] 可能变为 [2,5,6,0,0,1,2] )。
@@ -41,16 +43,31 @@ public class SearchinRotatedSortedArrayII {
         int start = 0;
         int end = nums.length - 1;
         while (start + 1 < end) {
-            int mid = start + (end - start) /2;
+            int mid = start + (end - start) / 2;
             if (nums[mid] == target) {
                 return true;
-            } else if (nums[mid] < target) {
-                start = mid;
-            } else {
-                end = mid;
+            }
+
+            //case1
+            if (nums[mid] == nums[start] && nums[mid] == nums[end]) {
+                start++;
+                end--;
+            } else if (nums[mid] >= nums[start]) { //很重要的一点，说明前半部分是有序的
+                if (nums[start] <= target && target <= nums[mid]) {//说明target存在于[start,end]  then end = mid;
+                    end = mid;
+                } else {//说明target不存在于[start,end]  then start = mid;
+                    start = mid;
+                }
+            } else { //说明后半部分是有序的
+                if (nums[mid] <= target && target <= nums[end]) {//说明target存在于[mid,end]  then start = mid;
+                    start = mid;
+                } else {//说明target不存在于[mid,end]  then end = mid;
+                    end = mid;
+                }
             }
         }
 
-        return false;
+
+        return nums[start] == target || nums[end] == target;
     }
 }
