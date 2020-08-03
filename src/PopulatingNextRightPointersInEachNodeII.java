@@ -21,14 +21,62 @@
  *
  * 初始状态下，所有 next 指针都被设置为 NULL。
  *
- *
- *
- *
- * 进阶：
- *
  * 你只能使用常量级额外空间。
  * 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。
  */
 public class PopulatingNextRightPointersInEachNodeII {
 
+    /**
+     * https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/discuss/472675/Short-Java-solution-with-explanation-100-runtime-and-100-memory
+     * @param root
+     * @return
+     */
+    public Node connect(Node root) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.left != null) {
+            if(root.right != null) {
+                root.left.next = root.right;
+            } else {
+                root.left.next = findNext(root.next);
+            }
+        }
+
+        if (root.right != null) {
+            root.right.next = findNext(root.next);
+        }
+
+        findNext(root.right);
+        findNext(root.left);
+        return root;
+    }
+
+
+    /**
+     * scan all next parent nodes until we find the first left or right child
+     * 因为会存在next节点的left|right 无孩子节点的情况，这个时候需要继续遍历next节点
+     * @param root
+     * @return
+     */
+    private Node findNext(Node root) {
+        if (root == null) {
+            return null;
+        }
+
+        while (root != null) {
+            if(root.left != null) {
+                return root.left; //stop if encounter nonNull child Node
+            }
+
+            if (root.right != null) {
+                return root.right;
+            }
+
+            root = root.next;
+        }
+
+        return null;
+    }
 }
