@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = " Best Time to Buy and Sell Stock III";
+        String s = "Sum Root to Leaf Numbers";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
