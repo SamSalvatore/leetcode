@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = "Sum Root to Leaf Numbers";
+        String s = "Linked List Cycle II";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
