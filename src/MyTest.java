@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = "Linked List Cycle II";
+        String s = " Binary Tree Postorder Traversal";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
