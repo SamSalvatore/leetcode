@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = " Binary Tree Postorder Traversal";
+        String s = "Insertion Sort List";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
