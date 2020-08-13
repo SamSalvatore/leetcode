@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = "Insertion Sort List";
+        String s = " Maximum Product Subarray";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
