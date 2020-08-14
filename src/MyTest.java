@@ -13,7 +13,7 @@ import com.sun.deploy.util.StringUtils;
 public class MyTest {
 
     public static void main(String[] args) {
-        String s = " Maximum Product Subarray";
+        String s = "  Find Minimum in Rotated Sorted Array II";
         s = StringUtils.trimWhitespace(s);
         String[] strings = s.split(" ");
         String res = "";
