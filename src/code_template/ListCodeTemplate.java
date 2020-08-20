@@ -155,4 +155,24 @@ public class ListCodeTemplate {
 
         return slow;
     }
+
+
+    /**
+     * 获取链表长度
+     * @param head
+     * @return
+     */
+    private int getListNodeSize(ListNode head) {
+        if (head == null) {
+            return 0;
+        }
+
+        int size = 0;
+        while (head != null) {
+            size++;
+            head = head.next;
+        }
+
+        return size;
+    }
 }
