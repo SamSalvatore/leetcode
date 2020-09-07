@@ -29,13 +29,32 @@ import java.util.List;
  */
 public class CombinationSumIII {
 
+    /**
+     * 注意点：
+     * 1. 三步走: choose, explore, unchoose
+     * 2. 注意explore过程i 从 start 开始
+     */
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> combinationSum3(int k, int n) {
-        backTracking(new ArrayList<>(), k , n, 0);
+        backTracking(new ArrayList<>(), k , n, 1);
         return res;
     }
 
-    private void backTracking(List<Integer> list, int k, int n, int sum) {
+
+    private void backTracking(List<Integer> list, int k, int n, int start) {
+        if (list.size() == k && n == 0) {
+            res.add(new ArrayList<>(list));
             return;
+        }
+        for (int i = start; i <= 9; i++) {
+            //choose
+            list.add(i);
+
+            //explore
+            backTracking(list, k, n - i, i + 1);
+
+            //unchoose
+            list.remove(list.size() - 1);
+        }
     }
 }
